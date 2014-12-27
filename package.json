@@ -1,0 +1,39 @@
+{
+  "name": "dom-shims",
+  "version": "0.1.0",
+  "description": "Shims / polyfills for simple DOM API's missing in not-so-modern browsers.",
+  "files": [
+    "index.js",
+    "lib",
+    "shim"
+  ],
+  "devDependencies": {
+    "karma": "^0.12.22",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-chai-plugins": "^0.2.4",
+    "karma-cli": "^0.0.4",
+    "karma-commonjs": "^0.0.11",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-mocha": "^0.1.10",
+    "mocha": "^2.1.0",
+    "karma-sauce-launcher": "^0.2.10"
+  },
+  "scripts": {
+    "test": "karma start --single-run",
+    "start": "karma start"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/necolas/dom-shims.git"
+  },
+  "keywords": [
+    "browser",
+    "dom",
+    "shim",
+    "classlist",
+    "mutation",
+    "domtokenlist",
+    "customevent"
+  ]
+}
