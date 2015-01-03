@@ -10,7 +10,7 @@
 
   var isSupported = function (element) {
     return ('classList' in element) ?
-      element.classList.toggle('a', false) && !element.className : false;
+      element.classList.add('a', 'b') && element.classList.contains('b') : false;
   };
 
   /**
@@ -34,8 +34,7 @@
   // Fix incomplete add/remove/toggle implementations in IE 10-11, iOS 5, Android 4.3
   if (!isSupported(testHTMLElement)) {
     var classList = testHTMLElement.classList;
-    // no other way to reach original methods in iOS 5.1
-    var ElementPrototype = classList.constructor.prototype;
+    var DOMTokenListPrototype = DOMTokenList.prototype;
 
     var shimMethod = function (original) {
       return function () {
@@ -48,13 +47,13 @@
       };
     };
 
-    ElementPrototype.add = shimMethod(ElementPrototype.add);
-    ElementPrototype.remove = shimMethod(ElementPrototype.remove);
-    ElementPrototype.toggle = function(token, force) {
+    DOMTokenListPrototype.add = shimMethod(DOMTokenListPrototype.add);
+    DOMTokenListPrototype.remove = shimMethod(DOMTokenListPrototype.remove);
+    DOMTokenListPrototype.toggle = function(token, force) {
       if (1 in arguments && this.contains(token) === force) {
         return force;
       } else {
-        return ElementPrototype.toggle.call(this, token);
+        return DOMTokenListPrototype.toggle.call(this, token);
       }
     };
   }

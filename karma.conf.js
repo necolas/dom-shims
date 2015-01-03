@@ -40,7 +40,7 @@ module.exports = function (config) {
     },
     sauceIE11: {
       base: 'SauceLabs',
-      browserName: 'Internet explorer',
+      browserName: 'Internet Explorer',
       platform: 'Windows 8.1',
       version: '11'
     },
