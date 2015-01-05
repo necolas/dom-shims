@@ -6,11 +6,13 @@
    */
 
   var testHTMLElement = document.createElement('x');
-  var testSVGElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  var testSVGElement = document.createElementNS('http://www.w3.org/2000/svg',
+                                                'svg');
 
   var isSupported = function (element) {
     return ('classList' in element) ?
-      element.classList.add('a', 'b') && element.classList.contains('b') : false;
+      (!element.classList.toggle('a', false) && !element.classList.contains('a')) :
+      false;
   };
 
   /**
@@ -31,11 +33,10 @@
     });
   }
 
-  // Fix incomplete add/remove/toggle implementations in IE 10-11, iOS 5, Android 4.3
+  // Fix incomplete add/remove/toggle implementations in IE 10-11, iOS 5,
+  // Android 4.3
   if (!isSupported(testHTMLElement)) {
-    var classList = testHTMLElement.classList;
     var DOMTokenListPrototype = DOMTokenList.prototype;
-
     var shimMethod = function (original) {
       return function () {
         var i;
