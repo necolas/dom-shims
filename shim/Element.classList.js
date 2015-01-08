@@ -26,6 +26,7 @@
 
     Object.defineProperty(Element.prototype, 'classList', {
       get: function () {
+        /** @constructor */
         function ClassList() {}
         ClassList.prototype = new DOMTokenListShim(this, 'class');
         return new ClassList();
@@ -50,6 +51,13 @@
 
     DOMTokenListPrototype.add = shimMethod(DOMTokenListPrototype.add);
     DOMTokenListPrototype.remove = shimMethod(DOMTokenListPrototype.remove);
+
+    /**
+     * @param {string} token
+     * @param {boolean=} force
+     * @this DOMTokenList
+     * @return boolean
+     */
     DOMTokenListPrototype.toggle = function(token, force) {
       if (1 in arguments && this.contains(token) === force) {
         return force;

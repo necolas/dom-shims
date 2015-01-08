@@ -18,7 +18,13 @@
    * Apply shim
    */
 
-  // http://www.w3.org/TR/dom/#customevent
+  /**
+   * http://www.w3.org/TR/dom/#customevent
+   * @param {string} type
+   * @param {{bubbles: (boolean|undefined),
+   *          cancelable: (boolean|undefined),
+   *          detail: *}=} eventInitDict
+   */
   function CustomEvent(type, eventInitDict) {
     if (typeof type != 'string') {
       throw new TypeError(
