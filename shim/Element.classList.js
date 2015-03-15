@@ -62,7 +62,7 @@
       if (1 in arguments && this.contains(token) === force) {
         return force;
       } else {
-        return DOMTokenListPrototype.toggle.call(this, token);
+        return DOMTokenListShim.prototype.toggle.call(this, token, force);
       }
     };
   }
