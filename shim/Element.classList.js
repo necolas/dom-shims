@@ -5,6 +5,7 @@
    * Detect full support
    */
 
+  var DOMTokenListShim;
   var testHTMLElement = document.createElement('x');
   var testSVGElement = document.createElementNS('http://www.w3.org/2000/svg',
                                                 'svg');
@@ -22,7 +23,7 @@
   // Element.prototype.classList
   // provide SVG support in IE 9-11
   if (!isSupported(testSVGElement)) {
-    var DOMTokenListShim = require('../lib/DOMTokenList');
+    DOMTokenListShim = require('../lib/DOMTokenList');
 
     Object.defineProperty(Element.prototype, 'classList', {
       get: function () {
@@ -37,6 +38,8 @@
   // Fix incomplete add/remove/toggle implementations in IE 10-11, iOS 5,
   // Android 4.3
   if (!isSupported(testHTMLElement)) {
+    DOMTokenListShim = require('../lib/DOMTokenList');
+
     var DOMTokenListPrototype = DOMTokenList.prototype;
     var shimMethod = function (original) {
       return function () {
@@ -62,7 +65,7 @@
       if (1 in arguments && this.contains(token) === force) {
         return force;
       } else {
-        return DOMTokenListPrototype.toggle.call(this, token);
+        return DOMTokenListShim.prototype.toggle.call(this, token, force);
       }
     };
   }
