@@ -1,5 +1,9 @@
 === HEAD
 
+=== 0.1.3
+
+* Fix classList.toggle in IE 10/11.
+
 === 0.1.2
 
 * Remove use of defineProperty in lib/DOMTokenList.
