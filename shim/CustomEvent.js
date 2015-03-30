@@ -1,4 +1,4 @@
-(function (window) {
+(function () {
   'use strict';
 
   /**
@@ -44,4 +44,4 @@
   }
 
   window.CustomEvent = CustomEvent;
-}(this));
+}());
