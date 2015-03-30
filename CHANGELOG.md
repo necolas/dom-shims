@@ -1,5 +1,9 @@
 === HEAD
 
+=== 0.1.4
+
+* Fix CustomEvent in strict mode.
+
 === 0.1.3
 
 * Fix classList.toggle in IE 10/11.

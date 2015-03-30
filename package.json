@@ -1,6 +1,6 @@
 {
   "name": "dom-shims",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Shims / polyfills for simple DOM API's missing in not-so-modern browsers.",
   "files": [
     "index.js",
